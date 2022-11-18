@@ -15,14 +15,19 @@ function Resultados() {
         const endPoint = `https://api.themoviedb.org/3/search/movie?api_key=ebf329b4e06c36a4d94b1edaf92cfece&language=es-ES&page=1&include_adult=false&query=${keyword}`;
         axios.get(endPoint).then(response => {
             const moviesArray = response.data.results;
-            if(moviesArray.length === 0){
-                swAlert(<h4>Tu busqueda no arrojo resultados</h4>);
+            if (moviesArray.length === 0) {
+                swAlert({
+                    title: "Tu busqueda no arrojo resultados",
+                    icon: "warning",
+                    button: "OK",
+                    closeModal: true,
+                }).close();
             }
             setMoviesResult(moviesArray);
         }).catch(error => {
             console.log(error);
         });
-    }); //Solucionar problema con el useEffect que es Failed to parse source map from 'C:\Users\Probando Uno\OneDrive\Documentos\Alkemy\alkemy-challenge\src\css\bootstrap.min.css.map' file: Error: ENOENT: no such file or directory, open 'C:\Users\Probando Uno\OneDrive\Documentos\Alkemy\alkemy-challenge\src\css\bootstrap.min.css.map'
+    }); 
 
     return (
         <>

@@ -15,7 +15,11 @@ function Listado() {
             const apiData = response.data;
             setMoviesList(apiData.results);
         }).catch(error => {
-            swAlert(<h2>Hubo errores, intenta mas tarde</h2>);
+            swAlert({
+                title: "Hubo errores, intenta mas tarde",
+                icon: "warning",
+                button: "OK",
+            });
         });
     }, [setMoviesList]);
 

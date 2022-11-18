@@ -15,34 +15,38 @@ function Login() {
         const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (email === "" || password === "") {
-            swAlert(
-                <h1>
-                    Los campos no pueden estar vacios
-                </h1>
-            );
+            swAlert({
+                title: "Los campos no pueden estar vacios",
+                icon: "warning",
+                button: "OK",
+            });
             return;
         }
 
         if (email !== "" && !regexEmail.test(email)) {
-            swAlert(
-                <h1>
-                    Debes escribir una direccion de correo electronico valida
-                </h1>
-            );
+            swAlert({
+                title: "Debes escribir una direccion de correo electronico valida",
+                icon: "warning",
+                button: "OK",
+            });
             return;
         }
 
         if (email !== "challenge@alkemy.org" || password !== "react") {
-            swAlert(
-                <h1>
-                    Credenciales inválidas!
-                </h1>
-            );
+            swAlert({
+                title: "Credenciales inválidas!",
+                icon: "warning",
+                button: "OK",
+            });
             return;
         }
 
         axios.post('http://challenge-react.alkemy.org', { email, password }).then(res => {
-            swAlert(<h2>Perfecto, ingresaste correctamente!</h2>);
+            swAlert({
+                title: "Perfecto, ingresaste correctamente!",
+                icon: "success",
+                button: "OK",
+            });
             const tokenRecibido = res.data.token;
             sessionStorage.setItem('token', tokenRecibido);
             history('/listado');

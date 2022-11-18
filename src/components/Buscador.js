@@ -10,10 +10,18 @@ function Buscador() {
         const keyword = e.currentTarget.keyword.value.trim();
 
         if (keyword.length === 0) {
-            swAlert(<h5>Tienes que escribir una palabra clave</h5>);
-        }else if(keyword.length < 4){
-            swAlert(<h5>Tienes que escribir mas de 4 caracteres</h5>);
-        }else{
+            swAlert({
+                title: "Tienes que escribir una palabra clave",
+                icon: "warning",
+                button: "OK",
+            });
+        } else if (keyword.length < 4) {
+            swAlert({
+                title: "Tienes que escribir mas de 4 caracteres",
+                icon: "warning",
+                button: "OK",
+            });
+        } else {
             e.currentTarget.keyword.value = '';
             history(`/resultados?keyword=${keyword}`);
         }
