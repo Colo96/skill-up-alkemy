@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import swAlert from 'sweetalert';
 
-function Listado() {
+function Listado(props) {
 
     let token = sessionStorage.getItem('token');
+
+    //console.log(props);
 
     const [moviesList, setMoviesList] = useState([]);
 
@@ -34,6 +36,7 @@ function Listado() {
                             <div className='col-3' key={index}>
                                 <div className="card my-4">
                                     <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className="card-img-top" alt="..." />
+                                    <button className='favourite-btn'>🖤</button>
                                     <div className="card-body">
                                         <h5 className="card-title">
                                             {movie.title.substring(0, 30)}...
