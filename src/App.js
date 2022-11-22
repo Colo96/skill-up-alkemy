@@ -18,13 +18,14 @@ function App() {
       <Header />
       <Routes>
         <Route exact path='/' element={<Login />} />
-        <Route path='/listado'
-          render={(props) => (
-            <Listado
+        <Route
+          path='/listado'
+          children={(props) => { 
+            return (<Listado
               {...props}
               addOrRemoveFromFavs={addOrRemoveFromFavs}
-            />
-          )}
+            />);
+          }}
         />
         <Route path='/detalle' element={<Detalle />} />
         <Route path='/resultados' element={<Resultados />} />
